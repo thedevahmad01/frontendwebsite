@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxora Motors | Premium Car Showroom</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #0b0b0b;
+            color: white;
+        }
+
+        /* Navbar */
+        nav {
+            width: 100%;
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 7%;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d4af37;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #d4af37;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background:
+                linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
+                url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=90")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-content p {
+            color: #d4af37;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 65px;
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero-content h1 span {
+            color: #d4af37;
+        }
+
+        .hero-content .description {
+            color: #ddd;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #d4af37;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title p {
+            color: #d4af37;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+        }
+
+        /* Cars */
+        .cars {
+            background: #111;
+        }
+
+        .car-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .car-card {
+            background: #181818;
+            border: 1px solid #292929;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4af37;
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .car-info {
+            padding: 25px;
+        }
+
+        .car-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .car-info p {
+            color: #aaa;
+            margin-bottom: 18px;
+        }
+
+        .price {
+            color: #d4af37;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Services */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service {
+            text-align: center;
+            padding: 40px 25px;
+            background: #151515;
+            border: 1px solid #292929;
+        }
+
+        .service .icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        .service p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Contact */
+        .contact {
+            background: #111;
+            text-align: center;
+        }
+
+        .contact p {
+            color: #aaa;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #050505;
+            color: #777;
+            border-top: 1px solid #222;
+        }
+
+        footer span {
+            color: #d4af37;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .car-container,
+            .services {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 0 4%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                padding: 0 6%;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .car-container,
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">LUXORA MOTORS</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#cars">Cars</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p>WELCOME TO LUXORA MOTORS</p>
+
+            <h1>
+                Drive Your <span>Dream</span>
+            </h1>
+
+            <div class="description">
+                Discover premium vehicles, exceptional quality and
+                an unmatched driving experience at Luxora Motors.
+            </div>
+
+            <a href="#cars" class="btn">EXPLORE CARS</a>
+        </div>
+    </section>
+
+
+    <!-- Cars Section -->
+    <section class="cars" id="cars">
+
+        <div class="section-title">
+            <p>OUR COLLECTION</p>
+            <h2>Featured Cars</h2>
+        </div>
+
+        <div class="car-container">
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80">
+
+                <div class="car-info">
+                    <h3>BMW M4</h3>
+                    <p>Luxury • Performance • Automatic</p>
+                    <div class="price">PKR 3.5 Crore</div>
+                </div>
+            </div>
+
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1000&q=80">
+
+                <div class="car-info">
+                    <h3>Land Cruiser LC300</h3>
+                    <p>Luxury SUV • 4WD • Automatic</p>
+                    <div class="price">PKR 9.5 Crore</div>
+                </div>
+            </div>
+
+
+            <div class="car-card">
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80">
+
+                <div class="car-info">
+                    <h3>Mercedes-Benz</h3>
+                    <p>Luxury • Comfort • Premium</p>
+                    <div class="price">PKR 4.8 Crore</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Services -->
+    <section id="services">
+
+        <div class="section-title">
+            <p>WHAT WE OFFER</p>
+            <h2>Our Services</h2>
+        </div>
+
+        <div class="services">
+
+            <div class="service">
+                <div class="icon">🚘</div>
+                <h3>Premium Cars</h3>
+                <p>
+                    Explore our collection of luxury and
+                    high-performance vehicles.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="icon">🔧</div>
+                <h3>Car Maintenance</h3>
+                <p>
+                    Professional maintenance and inspection
+                    services for your vehicle.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="icon">🤝</div>
+                <h3>Easy Financing</h3>
+                <p>
+                    Flexible financing options to help you
+                    drive your dream car.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+            <p>GET IN TOUCH</p>
+            <h2>Contact Luxora Motors</h2>
+        </div>
+
+        <p>📞 +92 300 1234567</p>
+        <p>📧 info@luxoramotors.com</p>
+        <p>📍 Lahore, Pakistan</p>
+
+        <br>
+
+        <a href="mailto:info@luxoramotors.com" class="btn">
+            CONTACT US
+        </a>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        © 2026 <span>Luxora Motors</span>. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
